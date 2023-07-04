@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="primary">
+    <file>icons/malico_delete.ico</file>
+    <file>icons/malico_folderSave.ico</file>
+    <file>icons/malicon_folderExport.ico</file>
+  </qresource>
+</RCC>

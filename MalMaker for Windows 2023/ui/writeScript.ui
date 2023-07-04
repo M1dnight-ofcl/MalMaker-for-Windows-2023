@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="scriptName">
+      <property name="text">
+       <string>ScriptName.mal</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QListWidget" name="eventList">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="dragEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QGroupBox" name="actionsGroupBox">
+      <property name="title">
+       <string>Actions</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTabWidget" name="actionsTab">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="tabPosition">
+          <enum>QTabWidget::East</enum>
+         </property>
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <property name="documentMode">
+          <bool>false</bool>
+         </property>
+         <property name="tabBarAutoHide">
+          <bool>false</bool>
+         </property>
+         <widget class="QWidget" name="tab_3">
+          <attribute name="title">
+           <string>File Settings</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout_5">
+           <item row="0" column="1">
+            <widget class="QLabel" name="fileNameLabel">
+             <property name="text">
+              <string>File Name</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="fileName"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCommandLinkButton" name="save">
+             <property name="text">
+              <string>Save</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../assets/icons/malico_folderSave.ico</normaloff>../assets/icons/malico_folderSave.ico</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCommandLinkButton" name="saveAs">
+             <property name="text">
+              <string>Save As</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../assets/icons/malico_folderSave.ico</normaloff>../assets/icons/malico_folderSave.ico</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCommandLinkButton" name="export_2">
+             <property name="text">
+              <string>Export</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../assets/icons/malicon_folderExport.ico</normaloff>../assets/icons/malicon_folderExport.ico</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="currentIndexActiond">
+          <attribute name="title">
+           <string>EventActions</string>
+          </attribute>
+          <layout class="QFormLayout" name="formLayout">
+           <item row="0" column="0" colspan="2">
+            <widget class="QGroupBox" name="groupBox">
+             <property name="title">
+              <string>Edit</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QCommandLinkButton" name="delete_2">
+                <property name="text">
+                 <string>Delete</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../assets/icons/malico_delete.ico</normaloff>../assets/icons/malico_delete.ico</iconset>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QCommandLinkButton" name="paramEditMenu">
+                <property name="text">
+                 <string>Edit Parameters</string>
+                </property>
+                <property name="icon">
+                 <iconset>
+                  <normaloff>../assets/icons/malico_paramEditMenu.ico</normaloff>../assets/icons/malico_paramEditMenu.ico</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>Add New Event</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="eventType">
+         <item>
+          <property name="text">
+           <string>Open Dialog</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Spam Dialog</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>New File</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Spam File</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Send Key</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Send Random Key</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Open Application</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Run Custom Python Script</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Run Custom VBScript</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="addEvent">
+         <property name="text">
+          <string>Confirm</string>
+         </property>
+         <property name="default">
+          <bool>false</bool>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QGroupBox" name="groupBox_4">
+      <property name="title">
+       <string>Test</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="runScriptButton">
+         <property name="text">
+          <string>Run Script</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../assets/_malico.qrc"/>
+ </resources>
+ <connections/>
+</ui>
