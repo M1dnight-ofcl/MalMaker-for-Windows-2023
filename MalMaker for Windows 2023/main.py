@@ -79,10 +79,19 @@ class ScriptWindow(QMainWindow):
         self.eventFunctionMapping()
 
         self.eventList.clicked.connect(self.getLastItem)
+
+        self.paramEditMenu.clicked.connect(self.editParamsAtCurrentIndex)
         self.delete_2.clicked.connect(self.deleteAtCurrentIndex)
+
         self.addEvent.clicked.connect(self.addNewScript)
         self.runScriptButton.clicked.connect(self.runScript)
-        self.paramEditMenu.clicked.connect(self.editParamsAtCurrentIndex)
+
+        def getFileName(): global file; file = self.fileName.text()
+        getFileName()
+        self.fileName.textChanged.connect(getFileName)
+
+        self.save.clicked.connect(lambda: mmconst.constructToProprietaryMalFile(self.eventList, paramLinkedToIndex, file))
+        
 
     def getLastItem(self):
         self.lastItem = self.eventList.currentItem()
