@@ -15,7 +15,9 @@ from threading import Thread
 from re import search
 
 # Local Libraries
-from lib import MalMakerLib as mmlib, MalMakerConstruct as mmconst
+from lib import MalMakerLib as mmlib, \
+                MalMakerConstruct as mmconst, \
+                MalMakerFileLoader as mmfldr
 	
 class WelcomeWindow(QMainWindow):
     def __init__(self):
