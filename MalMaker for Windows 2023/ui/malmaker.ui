@@ -89,19 +89,39 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string>Actions</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="0" column="0">
+              <widget class="QCommandLinkButton" name="newProject">
+               <property name="text">
+                <string>New Project</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../assets/icons/malico_newProject.ico</normaloff>../assets/icons/malico_newProject.ico</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
            <widget class="QGroupBox" name="veiwMenuButtons">
             <property name="title">
              <string>Veiw</string>
             </property>
             <layout class="QGridLayout" name="gridLayout_3">
-             <item row="0" column="0">
+             <item row="0" column="1">
               <widget class="QCommandLinkButton" name="welcomeButton">
                <property name="text">
                 <string>Welcome</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="1">
+             <item row="0" column="2">
               <widget class="QCommandLinkButton" name="scriptEditor">
                <property name="text">
                 <string>Script Editor</string>

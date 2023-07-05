@@ -21,12 +21,15 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="lib\MalMakerConstruct.py" />
+    <Compile Include="lib\MalMakerLib.py" />
     <Compile Include="main.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />
     <Folder Include="assets\icons\" />
     <Folder Include="docs\" />
+    <Folder Include="lib\" />
     <Folder Include="ui\" />
   </ItemGroup>
   <ItemGroup>
@@ -34,13 +37,17 @@
     <Content Include="assets\icons\malicon_folderExport.ico" />
     <Content Include="assets\icons\malico_delete.ico" />
     <Content Include="assets\icons\malico_folderSave.ico" />
+    <Content Include="assets\icons\malico_paramEditMenu.ico" />
     <Content Include="assets\icons\script-icon.png" />
     <Content Include="assets\logo-small.png" />
     <Content Include="assets\logo.png" />
     <Content Include="assets\logo.qrc" />
     <Content Include="assets\_malico.qrc" />
+    <Content Include="docs\introduction.md" />
+    <Content Include="todo.md" />
     <Content Include="ui\malmaker.ui" />
     <Content Include="ui\messageConfigMenu.ui" />
+    <Content Include="ui\newFileConfigMenu.ui" />
     <Content Include="ui\welcome.ui" />
     <Content Include="ui\writeScript.ui" />
   </ItemGroup>
