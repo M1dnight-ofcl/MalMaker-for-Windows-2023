@@ -37,7 +37,9 @@
     <Content Include="assets\icons\malicon_folderExport.ico" />
     <Content Include="assets\icons\malico_delete.ico" />
     <Content Include="assets\icons\malico_folderSave.ico" />
+    <Content Include="assets\icons\malico_newProject.ico" />
     <Content Include="assets\icons\malico_paramEditMenu.ico" />
+    <Content Include="assets\icons\malico_save.ico" />
     <Content Include="assets\icons\script-icon.png" />
     <Content Include="assets\logo-small.png" />
     <Content Include="assets\logo.png" />

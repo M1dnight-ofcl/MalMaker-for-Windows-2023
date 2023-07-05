@@ -12,6 +12,10 @@ from PyQt5.uic import loadUi
 # Import Modules
 import sys
 from threading import Thread
+from re import search
+
+# Local Libraries
+from lib import MalMakerLib as mmlib, MalMakerConstruct as mmconst
 	
 class WelcomeWindow(QMainWindow):
     def __init__(self):
@@ -41,6 +45,30 @@ class messageConfigMenu(QDialog):
         print(f'| - messageConfigMenu.submitParams [info] linked params: { paramLinkedToIndex[f"{index}" ]} to index {index}')
         self.close()
 
+class newFileConfigMenu(QDialog):
+    def __init__(self, index, filePath:str='', fileName:str='', fileContents:str=''):
+        super(newFileConfigMenu, self).__init__()
+        self.editMenu = loadUi('ui/newFileConfigMenu.ui', self)
+        self.setWindowTitle(f'Edit Object Parameters at Index {index}')
+
+        self.confirm.clicked.connect(lambda: self.submitParams(index))
+        
+        self.filePath.setText(filePath)
+        self.fileName.setText(fileName)
+        self.fileContents.setText(fileContents)
+
+        self.exec_()
+
+    def submitParams(self, index):
+        self.file = self.fileName.text()
+        self.path = self.filePath.text()
+        self.contents = self.fileContents.toPlainText()
+
+        print(f'| - newFileConfigMenu.submitParams [info] setting params for index {index}')
+
+        paramLinkedToIndex[f'{index}'] = [self.path, self.file, self.contents]
+        print(f'| - newFileConfigMenu.submitParams [info] linked params: { paramLinkedToIndex[f"{index}" ]} to index {index}')
+        self.close()
 
 
 class ScriptWindow(QMainWindow):
@@ -74,21 +102,13 @@ class ScriptWindow(QMainWindow):
         self.paramMenu = \
         {
             "Open Dialog": messageConfigMenu,
+               "New File": newFileConfigMenu,
         }
         self.eventMaps = \
         {
-            "Open Dialog": self.openDialogEvent,
+            "Open Dialog": mmlib.MalMakerEventScripts.openDialogEvent,
+               "New File": mmlib.MalMakerEventScripts.newFileEvent,
         }
-
-    def openDialogEvent(self, title:str="malmaker popup", message:str="this is a malmaker popup that has not been configured"):
-        print('[info] creating new dialog')
-        self.newDialog = QDialog()
-        self.newDialogLayout = QVBoxLayout()
-        self.newDialog.setWindowTitle(f'{title}')
-        self.newDialogMessage = QLabel(f'{message}')
-        self.newDialogLayout.addWidget(self.newDialogMessage)
-        self.newDialog.setLayout(self.newDialogLayout)
-        self.newDialog.exec_()
 
 
     def runScript(self, args:list=None):
@@ -97,9 +117,15 @@ class ScriptWindow(QMainWindow):
             self.Event = self.eventList.item(EventIndex).text()
             print(f'| - runScript() [info] found event {self.Event} at {EventIndex}')
             for event in self.eventMaps:
-                if event.find(self.Event):
+                if search(event, self.Event):
                     print(f'| - runScript() [info] running event {self.Event}')
-                    self.eventMaps[event](paramLinkedToIndex[f'{EventIndex}'][0], paramLinkedToIndex[f'{EventIndex}'][1])
+                    if len(paramLinkedToIndex[f'{EventIndex}']) == 2:
+                        self.eventMaps[event](paramLinkedToIndex[f'{EventIndex}'][0],\
+                                              paramLinkedToIndex[f'{EventIndex}'][1])
+                    elif len(paramLinkedToIndex[f'{EventIndex}']) == 3:
+                        self.eventMaps[event](paramLinkedToIndex[f'{EventIndex}'][0],\
+                                              paramLinkedToIndex[f'{EventIndex}'][1],\
+                                              paramLinkedToIndex[f'{EventIndex}'][2])
                 else:
                     pass
                     #print(f'| - runScript() [error] failed to run event {self.Event}\n                        This may be due to it not being in the eventMap')
@@ -117,8 +143,14 @@ class ScriptWindow(QMainWindow):
             self.index = self.eventList.indexFromItem(self.lastItem)
             self.itemAtCurrentEvent = self.eventList.itemFromIndex(self.index).text()
             for event in self.eventMaps:
-                if event.find(self.itemAtCurrentEvent):
-                    self.paramMenu[f'{event}'](self.index.row(), paramLinkedToIndex[f'{self.index.row()}'][0], paramLinkedToIndex[f'{self.index.row()}'][2])
+                if search(event, self.itemAtCurrentEvent):
+                    if len(paramLinkedToIndex[f'{self.index.row()}']) == 2:
+                        self.paramMenu[f'{event}'](self.index.row(), paramLinkedToIndex[f'{self.index.row()}'][0], \
+                                                                     paramLinkedToIndex[f'{self.index.row()}'][1])
+                    if len(paramLinkedToIndex[f'{self.index.row()}']) == 2:
+                        self.paramMenu[f'{event}'](self.index.row(), paramLinkedToIndex[f'{self.index.row()}'][0], \
+                                                                     paramLinkedToIndex[f'{self.index.row()}'][1], \
+                                                                     paramLinkedToIndex[f'{self.index.row()}'][2])
                 else:
                     pass
         except Exception as e:
