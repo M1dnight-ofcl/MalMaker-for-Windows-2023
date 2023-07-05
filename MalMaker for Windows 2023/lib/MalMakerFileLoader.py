@@ -14,4 +14,3 @@ from re import search
 # Local Libraries
 from lib.MalMakerLib import MalMakerEventScripts as mmlib
 
-class 
