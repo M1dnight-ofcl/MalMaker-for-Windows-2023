@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.uic import loadUi
+from pyautogui import press, typewrite, hotkey
 
 # Import Modules
 import sys, os
@@ -31,3 +32,6 @@ class MalMakerEventScripts:
             print(f'| - newFileEvent() [info] created new file at {path}{fileName}')
         except:
             print(f'| - newFileEvent() [info] failed to create file at {path}{fileName}, already exists')
+
+    def sendKey(key):
+        press(key)

@@ -1,0 +1,9 @@
+# --------------------------------------------------
+# fn:.mal - dt:<class 'datetime.datetime'>
+# raw data:
+# eventListClass=<PyQt5.QtWidgets.QListWidget object at 0x000001CBFB284CA0>
+# eventListContents=['Open Dialog_0', 'New File_1']
+# eventParams={'0': ['123', '456'], '1': ['', '123', '456']}
+# --------------------------------------------------
+Open Dialog('123', '456')
+New File('', '123', '456')

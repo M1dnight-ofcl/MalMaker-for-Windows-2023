@@ -105,6 +105,17 @@
                </property>
               </widget>
              </item>
+             <item row="0" column="1">
+              <widget class="QCommandLinkButton" name="openMal">
+               <property name="text">
+                <string>Open .Mal File</string>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>../assets/icons/malico_open.ico</normaloff>../assets/icons/malico_open.ico</iconset>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>

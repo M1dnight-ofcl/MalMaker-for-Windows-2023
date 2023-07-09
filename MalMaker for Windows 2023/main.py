@@ -72,6 +72,25 @@ class newFileConfigMenu(QDialog):
         print(f'| - newFileConfigMenu.submitParams [info] linked params: { paramLinkedToIndex[f"{index}" ]} to index {index}')
         self.close()
 
+class sendKeyConfigMenu(QDialog):
+    def __init__(self, index, key:str=''):
+        super(sendKeyConfigMenu, self).__init__()
+        self.editMenu = loadUi('ui/sendKeyConfigMenu.ui', self)
+        self.setWindowTitle(f'Edit Object Parameters at Index {index}')
+
+        self.confirm.clicked.connect(lambda: self.submitParams(index))
+
+        self.exec_()
+
+    def submitParams(self, index):
+        self.keystr = self.key.text()
+
+        print(f'| - sendKeyConfigMenu.submitParams [info] setting params for index {index}')
+
+        paramLinkedToIndex[f'{index}'] = [self.keystr]
+        print(f'| - sendKeyConfigMenu.submitParams [info] linked params: { paramLinkedToIndex[f"{index}" ]} to index {index}')
+        self.close()
+
 
 class ScriptWindow(QMainWindow):
     def __init__(self):
@@ -93,7 +112,7 @@ class ScriptWindow(QMainWindow):
         self.fileName.textChanged.connect(getFileName)
 
         self.save.clicked.connect(lambda: mmconst.constructToProprietaryMalFile(self.eventList, paramLinkedToIndex, file))
-        
+
 
     def getLastItem(self):
         self.lastItem = self.eventList.currentItem()
@@ -114,11 +133,13 @@ class ScriptWindow(QMainWindow):
         {
             "Open Dialog": messageConfigMenu,
                "New File": newFileConfigMenu,
+               "Send Key": sendKeyConfigMenu,
         }
         self.eventMaps = \
         {
             "Open Dialog": mmlib.MalMakerEventScripts.openDialogEvent,
                "New File": mmlib.MalMakerEventScripts.newFileEvent,
+               "Send Key": mmlib.MalMakerEventScripts.sendKey,
         }
 
 
@@ -156,6 +177,8 @@ class ScriptWindow(QMainWindow):
             for event in self.eventMaps:
                 if search(event, self.itemAtCurrentEvent):
                     if len(paramLinkedToIndex[f'{self.index.row()}']) == 2:
+                        self.paramMenu[f'{event}'](self.index.row(), paramLinkedToIndex[f'{self.index.row()}'][0])
+                    if len(paramLinkedToIndex[f'{self.index.row()}']) == 2:
                         self.paramMenu[f'{event}'](self.index.row(), paramLinkedToIndex[f'{self.index.row()}'][0], \
                                                                      paramLinkedToIndex[f'{self.index.row()}'][1])
                     if len(paramLinkedToIndex[f'{self.index.row()}']) == 2:
@@ -167,6 +190,15 @@ class ScriptWindow(QMainWindow):
         except Exception as e:
             print(f'| - deleteAtCurrentIndex() [info] no items selected or other reason: {e}')
 
+    def loadInformation(self, eventListContents, eventParams):
+        print(f'| - loadInformation.eventListContents [info] adding events {eventListContents}')
+        self.eventList.insertItems(0, eventListContents)
+        self.items=[]
+        for index in range(self.eventList.count()): self.items.append(self.eventList.item(index).text())
+        print(f'| - loadInformation.eventListContents [info] self.eventList now == {self.items}')
+        print(f'| - loadInformation.eventListContents [info] adding params {eventParams}')
+        self.eventList.update()
+        paramLinkedToIndex = eventParams
 
 class App(QMainWindow):
     def __init__(self):
@@ -187,7 +219,9 @@ class App(QMainWindow):
         self.WelcomeWindow.show()
         self.ScriptWindow.show()
 
-        print(self.workspace.subWindowList())
+        self.openMal.clicked.connect(mmfldr.openFile)
+
+        print(f'[info] got subwindows in workspace:\n{self.workspace.subWindowList()}')
 
     def run():
         if __name__ == '__main__': 

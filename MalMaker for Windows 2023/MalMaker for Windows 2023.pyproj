@@ -31,6 +31,7 @@
     <Folder Include="assets\icons\" />
     <Folder Include="docs\" />
     <Folder Include="lib\" />
+    <Folder Include="misc\" />
     <Folder Include="ui\" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <Content Include="assets\icons\malico_delete.ico" />
     <Content Include="assets\icons\malico_folderSave.ico" />
     <Content Include="assets\icons\malico_newProject.ico" />
+    <Content Include="assets\icons\malico_open.ico" />
     <Content Include="assets\icons\malico_paramEditMenu.ico" />
     <Content Include="assets\icons\malico_save.ico" />
     <Content Include="assets\icons\script-icon.png" />
@@ -47,10 +49,12 @@
     <Content Include="assets\logo.qrc" />
     <Content Include="assets\_malico.qrc" />
     <Content Include="docs\introduction.md" />
+    <Content Include="misc\test.mal" />
     <Content Include="todo.md" />
     <Content Include="ui\malmaker.ui" />
     <Content Include="ui\messageConfigMenu.ui" />
     <Content Include="ui\newFileConfigMenu.ui" />
+    <Content Include="ui\sendKeyConfigMenu.ui" />
     <Content Include="ui\welcome.ui" />
     <Content Include="ui\writeScript.ui" />
   </ItemGroup>

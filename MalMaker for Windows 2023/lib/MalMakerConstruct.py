@@ -1,5 +1,4 @@
 # Import PyQt5 Modules
-from sre_constants import RANGE
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -28,9 +27,9 @@ class constructToProprietaryMalFile:
 f"""# --------------------------------------------------
 # fn:{filename}.mal - dt:{datetime}
 # raw data:
-# eventListClass:{eventList}
-# eventListContents:{events}
-# eventParams:{eventParams}
+# eventListClass={eventList}
+# eventListContents={events}
+# eventParams={eventParams}
 # --------------------------------------------------
 """
                 file.write(f'{fileHeader}{fileContents}')
